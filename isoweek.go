@@ -10,8 +10,9 @@ import "time"
 // isoWeekday returns the ISO weekday number of given day.
 // (1 = Mon, 2 = Tue,.. 7 = Sun)
 func isoWeekday(year, month, day int) (weekday int) {
-	t := time.Date(year, time.Month(month), day, 0, 0, 0, 0, time.UTC)
-	weekday = int(t.Weekday())
+	weekday = int(
+		time.Date(year, time.Month(month), day, 0, 0, 0, 0, time.UTC).Weekday())
+
 	if weekday == 0 {
 		weekday = 7
 	}
@@ -33,6 +34,5 @@ func StartTime(wyear, week int, loc *time.Location) (start time.Time) {
 
 // StartDate returns the starting date (Monday) of the given ISO week.
 func StartDate(wyear, week int) (year int, month time.Month, day int) {
-	t := StartTime(wyear, week, time.UTC)
-	return t.Year(), t.Month(), t.Day()
+	return StartTime(wyear, week, time.UTC).Date()
 }
