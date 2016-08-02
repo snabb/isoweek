@@ -19,7 +19,7 @@ Simple example:
 ```
 
 To go to the following week (if you iterate through weeks) you can use
-AddDate() method:
+the standard AddDate() method:
 ```
 	wyear, week := st.AddDate(0, 0, 7).ISOWeek()
 	fmt.Println(wyear, week)
