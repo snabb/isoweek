@@ -7,8 +7,8 @@ import (
 	"time"
 )
 
-// TestStartTime tests all weeks from year 1 until year 4000. Ensure we match
-// the go standard library ISOWeek().
+// TestStartTime tests all weeks from year 1 until year 4000.
+// Ensures that behaviour matches the Go standard library ISOWeek().
 func TestStartTime(test *testing.T) {
 	t := time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC)
 	for t.Weekday() != time.Monday {
