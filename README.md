@@ -18,10 +18,11 @@ Simple example:
 	// Output: 1984-12-31 00:00:00 +0000 UTC
 ```
 
-To go to the following week (if you iterate through weeks) you can use
-the standard AddDate() method:
+If you want to iterate through weeks or to get the ending time of the week
+you can use the standard AddDate() method:
 ```Go
-	wyear, week := st.AddDate(0, 0, 7).ISOWeek()
+	et := st.AddDate(0, 0, 7)
+	wyear, week := et.ISOWeek()
 	fmt.Println(wyear, week)
 	// Output: 1985 2
 ```
