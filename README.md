@@ -12,7 +12,7 @@ Documentation:
 https://godoc.org/github.com/snabb/isoweek
 
 Simple example:
-```
+```Go
 	st := isoweek.StartTime(1985, 1, time.UTC)
 	fmt.Println(st)
 	// Output: 1984-12-31 00:00:00 +0000 UTC
@@ -20,7 +20,7 @@ Simple example:
 
 To go to the following week (if you iterate through weeks) you can use
 the standard AddDate() method:
-```
+```Go
 	wyear, week := st.AddDate(0, 0, 7).ISOWeek()
 	fmt.Println(wyear, week)
 	// Output: 1985 2
