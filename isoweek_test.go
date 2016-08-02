@@ -7,21 +7,21 @@ import (
 	"time"
 )
 
-func TestStartTime(t *testing.T) {
-	for y := 1; y < 4000; y++ {
-		for w := 1; w < 53; w++ {
-			st := isoweek.StartTime(y, w, time.UTC)
-			ty, tw := st.ISOWeek()
-			if ty != y || tw != w {
-				t.Errorf("mismatch: "+
-					"y = %d, w = %d "+
-					"-> %s "+
-					"-> ty = %d, tw = %d",
-					y, w,
-					st.Format("2006-01-02"),
-					ty, tw)
-			}
+// TestStartTime tests all weeks from year 1 until year 4000. Ensure we match
+// the go standard library ISOWeek().
+func TestStartTime(test *testing.T) {
+	t := time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC)
+	for t.Weekday() != time.Monday {
+		t = t.AddDate(0, 0, 1)
+	}
+	for t.Year() < 4000 {
+		wy, ww := t.ISOWeek()
+		wst := isoweek.StartTime(wy, ww, time.UTC)
+		if !wst.Equal(t) {
+			test.Errorf("mismatch: %v != %v (wy = %d, ww = %d)",
+				t, wst, wy, ww)
 		}
+		t = t.AddDate(0, 0, 7)
 	}
 }
 
