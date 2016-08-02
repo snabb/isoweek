@@ -15,8 +15,15 @@ Simple example:
 ```
 	st := isoweek.StartTime(1985, 1, time.UTC)
 	fmt.Println(st)
-	// Output:
-	// 1984-12-31 00:00:00 +0000 UTC
+	// Output: 1984-12-31 00:00:00 +0000 UTC
+```
+
+To go to the following week (if you iterate through weeks) you can use
+AddDate() method:
+```
+	wyear, week := st.AddDate(0, 0, 7).ISOWeek()
+	fmt.Println(wyear, week)
+	// Output: 1985 2
 ```
 
 The Git repository is located at: https://github.com/snabb/isoweek
