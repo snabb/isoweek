@@ -25,9 +25,16 @@ func TestStartTime(t *testing.T) {
 	}
 }
 
-func Example() {
+func ExampleStartTime() {
 	st := isoweek.StartTime(1985, 1, time.UTC)
-	fmt.Println(st.Format("2006-01-02"))
+	fmt.Println(st)
 	// Output:
-	// 1984-12-31
+	// 1984-12-31 00:00:00 +0000 UTC
+}
+
+func ExampleStartDate() {
+	y, m, d := isoweek.StartDate(2000, 1)
+	fmt.Println(d, m, y)
+	// Output:
+	// 3 January 2000
 }
