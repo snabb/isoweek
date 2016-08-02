@@ -19,17 +19,16 @@ func isoWeekday(year, month, day int) (weekday int) {
 	return weekday
 }
 
-// startOrdinal returns the ordinal day number (counting from 0) of Monday
-// of the given week. Return value may be negative or bigger than number of
-// days in a year.
-func startOrdinal(year, week int) (ordinal int) {
+// startOffset returns the offset (in days) from the start of a year to
+// Monday of the given week. Offset may be negative.
+func startOffset(year, week int) (offset int) {
 	return week*7 - isoWeekday(year, 1, 4) - 3
 }
 
 // StartTime returns the starting time (Monday 00:00) of the given ISO week.
 func StartTime(wyear, week int, loc *time.Location) (start time.Time) {
 	return time.Date(wyear, 1, 1, 0, 0, 0, 0, loc).AddDate(0, 0,
-		startOrdinal(wyear, week))
+		startOffset(wyear, week))
 }
 
 // StartDate returns the starting date (Monday) of the given ISO week.
