@@ -14,9 +14,9 @@ https://godoc.org/github.com/snabb/isoweek
 Simple example:
 ```
 	st := isoweek.StartTime(1985, 1, time.UTC)
-	fmt.Println(st.Format("2006-01-02"))
+	fmt.Println(st)
 	// Output:
-	// 1984-12-31
+	// 1984-12-31 00:00:00 +0000 UTC
 ```
 
 The Git repository is located at: https://github.com/snabb/isoweek
