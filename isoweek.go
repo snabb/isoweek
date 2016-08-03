@@ -1,4 +1,4 @@
-// Ṕackage isoweek calculates the starting time of ISO 8601 week.
+// Ṕackage isoweek calculates the starting time and date of ISO 8601 week.
 //
 // The Go standard library "time" package has ISOWeek() method for getting
 // ISO week number of given time.Time, but there is no reverse functionality
