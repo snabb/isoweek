@@ -30,8 +30,6 @@ you can use the standard AddDate() method:
 
 The Git repository is located at: https://github.com/snabb/isoweek
 
-golang
-
 
 License
 -------
