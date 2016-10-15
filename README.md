@@ -1,6 +1,8 @@
 isoweek
 =======
 
+[![GoDoc](https://godoc.org/github.com/snabb/isoweek?status.svg)](https://godoc.org/github.com/snabb/isoweek)
+
 The Go package isoweek calculates the starting time and date of ISO 8601
 week.
 
