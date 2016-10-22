@@ -3,7 +3,7 @@ isoweek
 
 [![GoDoc](https://godoc.org/github.com/snabb/isoweek?status.svg)](https://godoc.org/github.com/snabb/isoweek)
 
-The Go package isoweek calculates the starting time and date of ISO 8601
+The Go package isoweek calculates the starting date and time of ISO 8601
 week.
 
 The Go standard library "time" package has ISOWeek() method for getting
@@ -14,15 +14,16 @@ Documentation:
 
 https://godoc.org/github.com/snabb/isoweek
 
-Simple example:
+Simple example which gets the starting time of the 1st week of 1985:
 ```Go
 	st := isoweek.StartTime(1985, 1, time.UTC)
 	fmt.Println(st)
 	// Output: 1984-12-31 00:00:00 +0000 UTC
 ```
+The returned time may be within previous year as can be seen above.
 
-If you want to iterate through weeks or to get the ending time of the week
-you can use the standard AddDate() method:
+The AddDate() method in Go standard library can be used for getting the
+time at the end of the week and for iterating through weeks:
 ```Go
 	et := st.AddDate(0, 0, 7)
 	wyear, week := et.ISOWeek()
