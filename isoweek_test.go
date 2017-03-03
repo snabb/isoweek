@@ -44,6 +44,7 @@ func ExampleStartDate() {
 
 func ExampleValidate() {
 	fmt.Println(isoweek.Validate(2016, 52),
-		isoweek.Validate(2016, 53))
-	// Output: true false
+		isoweek.Validate(2016, 53),
+		isoweek.Validate(2017, 0))
+	// Output: true false false
 }
