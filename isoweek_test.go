@@ -7,6 +7,25 @@ import (
 	"time"
 )
 
+// TestISOWeekday tests all days from year 1 until year 4000.
+// Ensures that behaviour matches the Go standard library Weekday().
+func TestISOWeekday(test *testing.T) {
+	t := time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC)
+	var wd1, wd2 int
+	for t.Year() < 4000 {
+		wd1 = int(t.Weekday())
+		wd2 = isoweek.ISOWeekday(t.Date())
+
+		if wd2 == 7 {
+			wd2 = 0
+		}
+		if wd1 != wd2 {
+			test.Errorf("mismatch on %s", t.Format("2006-01-02"))
+		}
+		t = t.AddDate(0, 0, 1)
+	}
+}
+
 func ExampleISOWeekday() {
 	fmt.Println(isoweek.ISOWeekday(1984, 1, 1))
 	// Output: 7

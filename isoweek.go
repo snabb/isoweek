@@ -10,19 +10,24 @@ package isoweek
 
 import "time"
 
+// Tomohiko Sakamoto, modified for weeks starting on Monday
+var tomohiko = [...]int{6, 2, 1, 4, 6, 2, 4, 0, 3, 5, 1, 3}
+
 // ISOWeekday returns the ISO weekday number of given day.
 // (1 = Mon, 2 = Tue,.. 7 = Sun)
 //
 // This is different from Go's standard time.Weekday, which you should use
 // normally. It is exposed because it may be useful for some calculations.
 func ISOWeekday(year int, month time.Month, day int) (weekday int) {
-	weekday = int(
-		time.Date(year, month, day, 0, 0, 0, 0, time.UTC).Weekday())
-
-	if weekday == 0 {
-		weekday = 7
+	if month < 1 || month > 12 {
+		// prevent panic with array lookup
+		return 0
 	}
-	return weekday
+	// Tomohiko Sakamoto
+	if month < 3 {
+		year--
+	}
+	return (year+year/4-year/100+year/400+tomohiko[month-1]+day)%7 + 1
 }
 
 // startOffset returns the offset (in days) from the start of a year to
