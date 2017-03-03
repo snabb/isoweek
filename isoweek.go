@@ -44,6 +44,9 @@ func StartDate(wyear, week int) (year int, month time.Month, day int) {
 
 // Validate checks if a week number is valid. Returns true if it is valid.
 func Validate(wyear, week int) (ok bool) {
+	if week < 1 || week > 53 {
+		return false
+	}
 	wyear2, week2 := StartTime(wyear, week, time.UTC).ISOWeek()
 
 	if wyear == wyear2 && week == week2 {
