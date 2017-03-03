@@ -3,6 +3,9 @@
 // The Go standard library "time" package has ISOWeek() method for getting
 // ISO week number of given time.Time, but there is no reverse functionality
 // for getting the date from week number. This package implements that.
+//
+// Invalid week numbers are silently accepted. There is a separate Validate()
+// function if validation is needed.
 package isoweek
 
 import "time"
@@ -34,4 +37,14 @@ func StartTime(wyear, week int, loc *time.Location) (start time.Time) {
 // StartDate returns the starting date (Monday) of the given ISO week.
 func StartDate(wyear, week int) (year int, month time.Month, day int) {
 	return StartTime(wyear, week, time.UTC).Date()
+}
+
+// Validate checks if a week number is valid. Returns true if it is valid.
+func Validate(wyear, week int) (ok bool) {
+	wyear2, week2 := StartTime(wyear, week, time.UTC).ISOWeek()
+
+	if wyear == wyear2 && week == week2 {
+		return true
+	}
+	return false
 }

@@ -36,3 +36,9 @@ func ExampleStartDate() {
 	fmt.Println(d, m, y)
 	// Output: 3 January 2000
 }
+
+func ExampleValidate() {
+	fmt.Println(isoweek.Validate(2016, 52),
+		isoweek.Validate(2016, 53))
+	// Output: true false
+}
