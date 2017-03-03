@@ -12,9 +12,12 @@ import "time"
 
 // ISOWeekday returns the ISO weekday number of given day.
 // (1 = Mon, 2 = Tue,.. 7 = Sun)
-func ISOWeekday(year, month, day int) (weekday int) {
+//
+// This is different from Go's standard time.Weekday, which you should use
+// normally. It is exposed because it may be useful for some calculations.
+func ISOWeekday(year int, month time.Month, day int) (weekday int) {
 	weekday = int(
-		time.Date(year, time.Month(month), day, 0, 0, 0, 0, time.UTC).Weekday())
+		time.Date(year, month, day, 0, 0, 0, 0, time.UTC).Weekday())
 
 	if weekday == 0 {
 		weekday = 7

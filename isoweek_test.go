@@ -7,6 +7,11 @@ import (
 	"time"
 )
 
+func ExampleISOWeekday() {
+	fmt.Println(isoweek.ISOWeekday(1984, 1, 1))
+	// Output: 7
+}
+
 // TestStartTime tests all weeks from year 1 until year 4000.
 // Ensures that behaviour matches the Go standard library ISOWeek().
 func TestStartTime(test *testing.T) {
