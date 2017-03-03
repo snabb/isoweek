@@ -7,9 +7,9 @@ package isoweek
 
 import "time"
 
-// IsoWeekday returns the ISO weekday number of given day.
+// ISOWeekday returns the ISO weekday number of given day.
 // (1 = Mon, 2 = Tue,.. 7 = Sun)
-func IsoWeekday(year, month, day int) (weekday int) {
+func ISOWeekday(year, month, day int) (weekday int) {
 	weekday = int(
 		time.Date(year, time.Month(month), day, 0, 0, 0, 0, time.UTC).Weekday())
 
@@ -22,7 +22,7 @@ func IsoWeekday(year, month, day int) (weekday int) {
 // startOffset returns the offset (in days) from the start of a year to
 // Monday of the given week. Offset may be negative.
 func startOffset(year, week int) (offset int) {
-	return week*7 - IsoWeekday(year, 1, 4) - 3
+	return week*7 - ISOWeekday(year, 1, 4) - 3
 }
 
 // StartTime returns the starting time (Monday 00:00) of the given ISO week.
