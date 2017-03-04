@@ -10,6 +10,16 @@ The Go standard library "time" package has ISOWeek() method for getting
 ISO week number of given time.Time, but there is no reverse functionality
 for getting the date from week number. This package implements that.
 
+Invalid week numbers are silently accepted. There is a separate Validate()
+function if validation is needed.
+
+It also has functions for working with Julian day numbers (which is
+often the easiest way to do date calculations -- and much faster than
+using Go's standard "time" package) as well as a function for getting
+the international standard weekday number from a date. The Go standard
+library uses strange US weekday numbering.
+
+
 Documentation:
 
 https://godoc.org/github.com/snabb/isoweek

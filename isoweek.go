@@ -6,6 +6,12 @@
 //
 // Invalid week numbers are silently accepted. There is a separate Validate()
 // function if validation is needed.
+//
+// It also has functions for working with Julian day numbers (which is
+// often the easiest way to do date calculations -- and much faster than
+// using Go's standard "time" package) as well as a function for getting
+// the international standard weekday number from a date. The Go standard
+// library uses strange US weekday numbering.
 package isoweek
 
 import "time"
@@ -13,8 +19,7 @@ import "time"
 // ISOWeekday returns the ISO weekday number of given day.
 // (1 = Mon, 2 = Tue,.. 7 = Sun)
 //
-// This is different from Go's standard time.Weekday, which you should use
-// normally. It is exposed because it may be useful for some calculations.
+// This is different from Go's standard time.Weekday.
 func ISOWeekday(year int, month time.Month, day int) (weekday int) {
 	return DateToJulian(year, month, day)%7 + 1
 }
