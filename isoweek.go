@@ -16,10 +16,7 @@ import "time"
 // This is different from Go's standard time.Weekday, which you should use
 // normally. It is exposed because it may be useful for some calculations.
 func ISOWeekday(year int, month time.Month, day int) (weekday int) {
-	// Tøndering's algorithm, modified for weeks starting on Monday
-	a := (14 - int(month)) / 12
-	y := year - a
-	return (day+y+y/4-y/100+y/400+31*(int(month)+12*a-2)/12-1)%7 + 1
+	return DateToJulian(year, month, day)%7 + 1
 }
 
 // startOffset returns the offset (in days) from the start of a year to
@@ -32,13 +29,14 @@ func startOffset(y, week int) (offset int) {
 
 // StartTime returns the starting time (Monday 00:00) of the given ISO week.
 func StartTime(wyear, week int, loc *time.Location) (start time.Time) {
-	return time.Date(wyear, 1, 1, 0, 0, 0, 0, loc).
-		AddDate(0, 0, startOffset(wyear, week))
+	y, m, d := StartDate(wyear, week)
+	return time.Date(y, m, d, 0, 0, 0, 0, loc)
 }
 
 // StartDate returns the starting date (Monday) of the given ISO week.
 func StartDate(wyear, week int) (year int, month time.Month, day int) {
-	return StartTime(wyear, week, time.UTC).Date()
+	return JulianToDate(
+		DateToJulian(wyear, 1, 1) + startOffset(wyear, week))
 }
 
 // Validate checks if a week number is valid. Returns true if it is valid.
