@@ -22,9 +22,9 @@ func ISOWeekday(year int, month time.Month, day int) (weekday int) {
 // startOffset returns the offset (in days) from the start of a year to
 // Monday of the given week. Offset may be negative.
 func startOffset(y, week int) (offset int) {
+	// return week*7 - ISOWeekday(y, 1, 4) - 3
 	y = y - 1
 	return week*7 - (y+y/4-y/100+y/400+3)%7 - 4
-	// return week*7 - ISOWeekday(y, 1, 4) - 3
 }
 
 // StartTime returns the starting time (Monday 00:00) of the given ISO week.
