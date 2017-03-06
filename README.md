@@ -3,7 +3,8 @@ isoweek
 
 [![GoDoc](https://godoc.org/github.com/snabb/isoweek?status.svg)](https://godoc.org/github.com/snabb/isoweek)
 [![Build Status](https://travis-ci.org/snabb/isoweek.svg?branch=master)](https://travis-ci.org/snabb/isoweek)
-[ ![Codeship Status for snabb/isoweek](https://app.codeship.com/projects/c8397690-e4c5-0134-ae31-1e40c0fe04ca/status?branch=master)](https://app.codeship.com/projects/206288)
+[![Codeship Status](https://app.codeship.com/projects/c8397690-e4c5-0134-ae31-1e40c0fe04ca/status?branch=master)](https://app.codeship.com/projects/206288)
+[![codecov](https://codecov.io/gh/snabb/isoweek/branch/master/graph/badge.svg)](https://codecov.io/gh/snabb/isoweek)
 
 The Go package isoweek calculates the starting date and time of ISO 8601
 week.
