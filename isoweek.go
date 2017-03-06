@@ -44,6 +44,7 @@ func StartDate(wyear, week int) (year int, month time.Month, day int) {
 		DateToJulian(wyear, 1, 1) + startOffset(wyear, week))
 }
 
+// ordinalInYear returns the ordinal (within a year) day number.
 func ordinalInYear(year int, month time.Month, day int) (dayNo int) {
 	return DateToJulian(year, month, day) - DateToJulian(year, 1, 1) + 1
 }
@@ -54,11 +55,9 @@ func FromDate(year int, month time.Month, day int) (wyear, week int) {
 	if week < 1 {
 		return FromDate(year-1, 12, 31) // last week of preceding year
 	}
-	if week == 53 {
-		if DateToJulian(StartDate(year+1, 1)) <= DateToJulian(year, month, day) {
-			return year + 1, 1
-		}
-		return year, week
+	if week == 53 &&
+		DateToJulian(StartDate(year+1, 1)) <= DateToJulian(year, month, day) {
+		return year + 1, 1 // first week of following year
 	}
 	return year, week
 }
