@@ -61,6 +61,25 @@ func ExampleStartDate() {
 	// Output: 3 January 2000
 }
 
+// TestFromDate  tests all days from year 1 until year 4000.
+// Ensures that behaviour matches the Go standard library ISOWeek().
+func TestFromDate(test *testing.T) {
+	t := time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC)
+	for t.Year() < 4000 {
+		wy, ww := t.ISOWeek()
+		wy2, ww2 := isoweek.FromDate(t.Date())
+		if wy != wy2 || ww != ww2 {
+			test.Errorf("mismatch on %s", t.Format("2006-01-02"))
+		}
+		t = t.AddDate(0, 0, 1)
+	}
+}
+
+func ExampleFromDate() {
+	fmt.Println(isoweek.FromDate(1984, 1, 1))
+	// Output: 1983 52
+}
+
 func ExampleValidate() {
 	fmt.Println(isoweek.Validate(2016, 52),
 		isoweek.Validate(2016, 53),

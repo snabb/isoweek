@@ -44,6 +44,25 @@ func StartDate(wyear, week int) (year int, month time.Month, day int) {
 		DateToJulian(wyear, 1, 1) + startOffset(wyear, week))
 }
 
+func ordinalInYear(year int, month time.Month, day int) (dayNo int) {
+	return DateToJulian(year, month, day) - DateToJulian(year, 1, 1) + 1
+}
+
+// FromDate returns ISO week number of a date.
+func FromDate(year int, month time.Month, day int) (wyear, week int) {
+	week = (ordinalInYear(year, month, day) - ISOWeekday(year, month, day) + 10) / 7
+	if week < 1 {
+		return FromDate(year-1, 12, 31) // last week of preceding year
+	}
+	if week == 53 {
+		if DateToJulian(StartDate(year+1, 1)) <= DateToJulian(year, month, day) {
+			return year + 1, 1
+		}
+		return year, week
+	}
+	return year, week
+}
+
 // Validate checks if a week number is valid. Returns true if it is valid.
 func Validate(wyear, week int) (ok bool) {
 	if week < 1 || week > 53 {
