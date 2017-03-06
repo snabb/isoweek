@@ -68,7 +68,7 @@ func Validate(wyear, week int) (ok bool) {
 	if week < 1 || week > 53 {
 		return false
 	}
-	wyear2, week2 := StartTime(wyear, week, time.UTC).ISOWeek()
+	wyear2, week2 := FromDate(StartDate(wyear, week))
 
 	if wyear == wyear2 && week == week2 {
 		return true
