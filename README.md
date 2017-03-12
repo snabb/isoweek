@@ -3,7 +3,6 @@ isoweek
 
 [![GoDoc](https://godoc.org/github.com/snabb/isoweek?status.svg)](https://godoc.org/github.com/snabb/isoweek)
 [![Build Status](https://travis-ci.org/snabb/isoweek.svg?branch=master)](https://travis-ci.org/snabb/isoweek)
-[![Codeship Status](https://app.codeship.com/projects/c8397690-e4c5-0134-ae31-1e40c0fe04ca/status?branch=master)](https://app.codeship.com/projects/206288)
 [![codecov](https://codecov.io/gh/snabb/isoweek/branch/master/graph/badge.svg)](https://codecov.io/gh/snabb/isoweek)
 [![Go Report Card](https://goreportcard.com/badge/github.com/snabb/isoweek)](https://goreportcard.com/report/github.com/snabb/isoweek)
 
