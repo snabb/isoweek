@@ -4,14 +4,12 @@
 // ISO week number of given time.Time, but there is no reverse functionality
 // for getting the date from week number. This package implements that.
 //
-// Invalid week numbers are silently accepted. There is a separate Validate()
-// function if validation is needed.
+// Invalid input is silently accepted. There is a separate Validate()
+// function if week number validation is needed.
 //
-// It also has functions for working with Julian day numbers (which is
-// often the easiest way to do date calculations -- and much faster than
-// using Go's standard "time" package) as well as a function for getting
-// the international standard weekday number from a date. The Go standard
-// library uses strange US weekday numbering.
+// There are also functions for working with Julian day numbers. Using Julian
+// day numbers is often the easiest and fastest way to do date calculations.
+//
 package isoweek
 
 import "time"
