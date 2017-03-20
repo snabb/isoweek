@@ -19,13 +19,20 @@ import "time"
 //
 // This is different from Go's standard time.Weekday.
 func ISOWeekday(year int, month time.Month, day int) (weekday int) {
+	// Richards, E. G. (2013) pp. 592, 618
+
 	return DateToJulian(year, month, day)%7 + 1
 }
 
 // startOffset returns the offset (in days) from the start of a year to
 // Monday of the given week. Offset may be negative.
 func startOffset(y, week int) (offset int) {
+	// This is optimized version of the following:
+	//
 	// return week*7 - ISOWeekday(y, 1, 4) - 3
+	//
+	// Uses Tomohiko Sakamoto's algorithm for calculating the weekday.
+
 	y = y - 1
 	return week*7 - (y+y/4-y/100+y/400+3)%7 - 4
 }

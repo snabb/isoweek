@@ -4,6 +4,9 @@ import "time"
 
 // DateToJulian converts a date to a Julian day number.
 func DateToJulian(year int, month time.Month, day int) (dayNo int) {
+	// Claus Tøndering's Calendar FAQ
+	// http://www.tondering.dk/claus/cal/julperiod.php#formula
+
 	if month < 3 {
 		year = year - 1
 		month = month + 12
@@ -16,6 +19,8 @@ func DateToJulian(year int, month time.Month, day int) (dayNo int) {
 
 // JulianToDate converts a Julian day number to a date.
 func JulianToDate(dayNo int) (year int, month time.Month, day int) {
+	// Richards, E. G. (2013) pp. 585–624
+
 	e := 4*(dayNo+1401+(4*dayNo+274277)/146097*3/4-38) + 3
 	h := e%1461/4*5 + 2
 
