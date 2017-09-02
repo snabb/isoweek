@@ -10,7 +10,7 @@ The Go package isoweek calculates the starting date and time of ISO 8601
 week.
 
 The Go standard library "time" package has ISOWeek() method for getting
-ISO week number of given time.Time, but there is no reverse functionality
+ISO 8601 week number of given time.Time, but there is no reverse functionality
 for getting the date from week number. This package implements that.
 
 Invalid input is silently accepted. There is a separate Validate()
