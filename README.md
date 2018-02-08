@@ -9,15 +9,23 @@ isoweek
 The Go package isoweek calculates the starting date and time of ISO 8601
 week.
 
+ISO 8601 standard defines the common week numbering system used in Europe
+and many other countries. Monday is the first day of the week.
+
 The Go standard library "time" package has ISOWeek() method for getting
-ISO 8601 week number of given time.Time, but there is no reverse functionality
-for getting the date from week number. This package implements that.
+ISO 8601 week number of given time.Time, but there is no reverse
+functionality for getting the date from week number. This package
+implements that.
 
 Invalid input is silently accepted. There is a separate Validate()
 function if week number validation is needed.
 
 There are also functions for working with Julian day numbers. Using Julian
 day numbers is often the easiest and fastest way to do date calculations.
+
+This package does not work with week system used in US/Canada/Australia
+(weeks starting on Sundays). However the julian day number functions
+may be useful.
 
 
 Documentation:
