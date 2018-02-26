@@ -40,8 +40,8 @@ Examples
 
 Simple example which gets the starting time of the 1st week of 1985:
 ```Go
-	t1 := isoweek.StartTime(1985, 1, time.UTC)
-	fmt.Println(t1)
+	t := isoweek.StartTime(1985, 1, time.UTC)
+	fmt.Println(t)
 	// Output: 1984-12-31 00:00:00 +0000 UTC
 ```
 The returned time may be within previous year as can be seen above.
@@ -49,11 +49,11 @@ The returned time may be within previous year as can be seen above.
 The AddDate() function in Go standard library "time" package can be used
 for getting the time at the end of the week or for iterating through weeks:
 ```Go
-	t2 := t1.AddDate(0, 0, 7)
-	fmt.Println(t2)
+	t := t.AddDate(0, 0, 7)
+	fmt.Println(t)
 	// Output: 1985-01-07 00:00:00 +0000 UTC
 
-	wyear, week := t2.ISOWeek()
+	wyear, week := t.ISOWeek()
 	fmt.Println(wyear, week)
 	// Output: 1985 2
 ```
