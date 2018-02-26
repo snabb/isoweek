@@ -12,10 +12,9 @@ week.
 ISO 8601 standard defines the common week numbering system used in Europe
 and many other countries. Monday is the first day of the week.
 
-The Go standard library "time" package has ISOWeek() method for getting
-ISO 8601 week number of given time.Time, but there is no reverse
-functionality for getting the date from week number. This package
-implements that.
+The Go standard library "time" package has ISOWeek() function for getting
+ISO 8601 week number of given Time, but there is no reverse functionality
+for getting the date from week number. This package implements that.
 
 Invalid input is silently accepted. There is a separate Validate()
 function if week number validation is needed.
@@ -23,33 +22,67 @@ function if week number validation is needed.
 There are also functions for working with Julian day numbers. Using Julian
 day numbers is often the easiest and fastest way to do date calculations.
 
-This package does not work with week system used in US/Canada/Australia
-(weeks starting on Sundays). However the julian day number functions
-may be useful.
+This package does not work with the week system used in US/Canada/Australia
+(weeks starting on Sundays). However the Julian day number functions
+may be still useful.
 
 
-Documentation:
+Documentation
+-------------
 
 https://godoc.org/github.com/snabb/isoweek
 
+
+Examples
+--------
+
+### Using weeks with Go standard time.Time
+
 Simple example which gets the starting time of the 1st week of 1985:
 ```Go
-	st := isoweek.StartTime(1985, 1, time.UTC)
-	fmt.Println(st)
+	t1 := isoweek.StartTime(1985, 1, time.UTC)
+	fmt.Println(t1)
 	// Output: 1984-12-31 00:00:00 +0000 UTC
 ```
 The returned time may be within previous year as can be seen above.
 
-The AddDate() method in Go standard library can be used for getting the
-time at the end of the week and for iterating through weeks:
+The AddDate() function in Go standard library "time" package can be used
+for getting the time at the end of the week or for iterating through weeks:
 ```Go
-	et := st.AddDate(0, 0, 7)
-	wyear, week := et.ISOWeek()
+	t2 := t1.AddDate(0, 0, 7)
+	fmt.Println(t2)
+	// Output: 1985-01-07 00:00:00 +0000 UTC
+
+	wyear, week := t2.ISOWeek()
 	fmt.Println(wyear, week)
 	// Output: 1985 2
 ```
 
-The Git repository is located at: https://github.com/snabb/isoweek
+### Using weeks, dates and Julian day numbers
+
+The same as above without using Go standard library "time" package:
+
+```Go
+	y, m, d := isoweek.StartDate(1985, 1)
+	fmt.Println(y, m, d)
+	// Output: 1984 December 31
+
+	jul := isoweek.DateToJulian(y, m, d)
+	jul = jul + 7 // next week
+	y, m, d = isoweek.JulianToDate(jul)
+	fmt.Println(y, m, d)
+	// Output: 1985 January 7
+
+	wyear, week := isoweek.FromDate(y, m, d)
+	fmt.Println(wyear, week)
+	// Output: 1985 2
+```
+
+
+Repository
+----------
+
+https://github.com/snabb/isoweek
 
 
 License
