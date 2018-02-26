@@ -50,8 +50,8 @@ func TestStartTime(test *testing.T) {
 }
 
 func ExampleStartTime() {
-	st := isoweek.StartTime(1985, 1, time.UTC)
-	fmt.Println(st)
+	t := isoweek.StartTime(1985, 1, time.UTC)
+	fmt.Println(t)
 	// Output: 1984-12-31 00:00:00 +0000 UTC
 }
 
