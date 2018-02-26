@@ -6,15 +6,15 @@ isoweek
 [![codecov](https://codecov.io/gh/snabb/isoweek/branch/master/graph/badge.svg)](https://codecov.io/gh/snabb/isoweek)
 [![Go Report Card](https://goreportcard.com/badge/github.com/snabb/isoweek)](https://goreportcard.com/report/github.com/snabb/isoweek)
 
-The Go package isoweek calculates the starting date and time of ISO 8601
+The Go package isoweek calculates a starting date and time of ISO 8601
 week.
 
 ISO 8601 standard defines the common week numbering system used in Europe
-and many other countries. Monday is the first day of the week.
+and many other countries. Monday is the first day of a week.
 
 The Go standard library "time" package has ISOWeek() function for getting
-ISO 8601 week number of given Time, but there is no reverse functionality
-for getting the date from week number. This package implements that.
+ISO 8601 week number of a given Time, but there is no reverse functionality
+for getting a date from a week number. This package implements that.
 
 Invalid input is silently accepted. There is a separate Validate()
 function if week number validation is needed.
@@ -38,16 +38,16 @@ Examples
 
 ### Using weeks with Go standard time.Time
 
-Simple example which gets the starting time of the 1st week of 1985:
+A simple example which gets the starting time of the 1st week of 1985:
 ```Go
 	t := isoweek.StartTime(1985, 1, time.UTC)
 	fmt.Println(t)
 	// Output: 1984-12-31 00:00:00 +0000 UTC
 ```
-The returned time may be within previous year as can be seen above.
+The returned time may be within a previous year as can be seen above.
 
 The AddDate() function in Go standard library "time" package can be used
-for getting the time at the end of the week or for iterating through weeks:
+for getting the Time at the end of the week or for iterating through weeks:
 ```Go
 	t = t.AddDate(0, 0, 7)
 	fmt.Println(t)
