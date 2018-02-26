@@ -49,7 +49,7 @@ The returned time may be within previous year as can be seen above.
 The AddDate() function in Go standard library "time" package can be used
 for getting the time at the end of the week or for iterating through weeks:
 ```Go
-	t := t.AddDate(0, 0, 7)
+	t = t.AddDate(0, 0, 7)
 	fmt.Println(t)
 	// Output: 1985-01-07 00:00:00 +0000 UTC
 
