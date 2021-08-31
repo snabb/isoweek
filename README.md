@@ -1,7 +1,7 @@
 isoweek
 =======
 
-[![GoDoc](https://godoc.org/github.com/snabb/isoweek?status.svg)](https://godoc.org/github.com/snabb/isoweek)
+[![Go Reference](https://pkg.go.dev/badge/github.com/snabb/isoweek.svg)](https://pkg.go.dev/github.com/snabb/isoweek)
 [![Build Status](https://travis-ci.org/snabb/isoweek.svg?branch=master)](https://travis-ci.org/snabb/isoweek)
 [![codecov](https://codecov.io/gh/snabb/isoweek/branch/master/graph/badge.svg)](https://codecov.io/gh/snabb/isoweek)
 [![Go Report Card](https://goreportcard.com/badge/github.com/snabb/isoweek)](https://goreportcard.com/report/github.com/snabb/isoweek)
@@ -30,7 +30,7 @@ may be still useful.
 Documentation
 -------------
 
-https://godoc.org/github.com/snabb/isoweek
+https://pkg.go.dev/github.com/snabb/isoweek
 
 
 Examples
