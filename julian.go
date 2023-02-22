@@ -3,7 +3,7 @@ package isoweek
 import "time"
 
 // DateToJulian converts a date to a Julian day number.
-func DateToJulian(year int, month time.Month, day int) (dayNo int) {
+func DateToJulian(year int, month time.Month, day int) (jdn int) {
 	// Claus Tøndering's Calendar FAQ
 	// http://www.tondering.dk/claus/cal/julperiod.php#formula
 
@@ -18,10 +18,10 @@ func DateToJulian(year int, month time.Month, day int) (dayNo int) {
 }
 
 // JulianToDate converts a Julian day number to a date.
-func JulianToDate(dayNo int) (year int, month time.Month, day int) {
+func JulianToDate(jdn int) (year int, month time.Month, day int) {
 	// Richards, E. G. (2013) pp. 585–624
 
-	e := 4*(dayNo+1401+(4*dayNo+274277)/146097*3/4-38) + 3
+	e := 4*(jdn+1401+(4*jdn+274277)/146097*3/4-38) + 3
 	h := e%1461/4*5 + 2
 
 	day = h%153/5 + 1

@@ -1,22 +1,26 @@
-// Package isoweek calculates a starting date and time of ISO 8601 week.
+// Package isoweek calculates a starting date and time of [ISO 8601] week.
 //
-// ISO 8601 standard defines the common week numbering system used in Europe
+// ISO 8601 standard defines the common [week number] system used in Europe
 // and many other countries. Monday is the first day of a week.
 //
-// The Go standard library "time" package has ISOWeek() function for getting
-// ISO 8601 week number of a given Time, but there is no reverse functionality
-// for getting a date from a week number. This package implements that.
+// The Go standard library [time] package has [time.Time.ISOWeek] function
+// for getting ISO 8601 week number of a given [time.Time], but there is no
+// reverse functionality for getting a date from a week number. This package
+// implements that.
 //
-// Invalid input is silently accepted. There is a separate Validate()
+// Invalid input is silently accepted. There is a separate [Validate]
 // function if week number validation is needed.
 //
-// There are also functions for working with Julian day numbers. Using Julian
+// There are also functions for working with [Julian day numbers]. Using Julian
 // day numbers is often the easiest and fastest way to do date calculations.
 //
-// This package does not work with the week system used in US/Canada/Australia
-// (weeks starting on Sundays). However the Julian day number functions
-// may be still useful.
+// This package does not work with the "traditional" week system used in
+// US/Canada/Japan/etc. (weeks starting on Sundays). However the Julian day
+// number functions may be still useful.
 //
+// [ISO 8601]: https://en.wikipedia.org/wiki/ISO_8601
+// [week number]: https://en.wikipedia.org/wiki/ISO_week_date
+// [Julian day numbers]: https://en.wikipedia.org/wiki/Julian_day
 package isoweek
 
 import "time"
@@ -24,7 +28,7 @@ import "time"
 // ISOWeekday returns the ISO 8601 weekday number of given day.
 // (1 = Mon, 2 = Tue,.. 7 = Sun)
 //
-// This is different from Go's standard time.Weekday.
+// This is different from Go's standard [time.Weekday].
 func ISOWeekday(year int, month time.Month, day int) (weekday int) {
 	// Richards, E. G. (2013) pp. 592, 618
 

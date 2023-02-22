@@ -1,3 +1,3 @@
 module github.com/snabb/isoweek
 
-go 1.14
+go 1.19

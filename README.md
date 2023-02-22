@@ -6,25 +6,29 @@ isoweek
 [![codecov](https://codecov.io/gh/snabb/isoweek/branch/master/graph/badge.svg)](https://codecov.io/gh/snabb/isoweek)
 [![Go Report Card](https://goreportcard.com/badge/github.com/snabb/isoweek)](https://goreportcard.com/report/github.com/snabb/isoweek)
 
-The Go package isoweek calculates a starting date and time of ISO 8601
-week.
+The Go package isoweek calculates a starting date and time of [ISO 8601] week.
 
-ISO 8601 standard defines the common week numbering system used in Europe
+ISO 8601 standard defines the common [week number] system used in Europe
 and many other countries. Monday is the first day of a week.
 
-The Go standard library "time" package has ISOWeek() function for getting
-ISO 8601 week number of a given Time, but there is no reverse functionality
-for getting a date from a week number. This package implements that.
+The Go standard library `time` package has `ISOWeek` function
+for getting ISO 8601 week number of a given `time.Time`, but there is no
+reverse functionality for getting a date from a week number. This package
+implements that.
 
-Invalid input is silently accepted. There is a separate Validate()
+Invalid input is silently accepted. There is a separate `Validate`
 function if week number validation is needed.
 
-There are also functions for working with Julian day numbers. Using Julian
+There are also functions for working with [Julian day numbers]. Using Julian
 day numbers is often the easiest and fastest way to do date calculations.
 
-This package does not work with the week system used in US/Canada/Australia
-(weeks starting on Sundays). However the Julian day number functions
-may be still useful.
+This package does not work with the "traditional" week system used in
+US/Canada/Japan/etc. (weeks starting on Sundays). However the Julian day
+number functions may be still useful.
+
+[ISO 8601]: https://en.wikipedia.org/wiki/ISO_8601
+[week number]: https://en.wikipedia.org/wiki/ISO_week_date
+[Julian day numbers]: https://en.wikipedia.org/wiki/Julian_day
 
 
 Documentation
@@ -46,8 +50,8 @@ A simple example which gets the starting time of the 1st week of 1985:
 ```
 The returned time may be within a previous year as can be seen above.
 
-The AddDate() function in Go standard library "time" package can be used
-for getting the Time at the end of the week or for iterating through weeks:
+The `AddDate` function in Go standard library `time` package can be used
+for getting the `Time` at the end of the week or for iterating through weeks:
 ```Go
 	t = t.AddDate(0, 0, 7)
 	fmt.Println(t)
@@ -60,16 +64,16 @@ for getting the Time at the end of the week or for iterating through weeks:
 
 ### Using weeks, dates and Julian day numbers
 
-The same as above without using Go standard library "time" package:
+The same as above without using Go standard library `time` package:
 
 ```Go
 	y, m, d := isoweek.StartDate(1985, 1)
 	fmt.Println(y, m, d)
 	// Output: 1984 December 31
 
-	jul := isoweek.DateToJulian(y, m, d)
-	jul = jul + 7 // next week
-	y, m, d = isoweek.JulianToDate(jul)
+	jdn := isoweek.DateToJulian(y, m, d)
+	jdn = jdn + 7 // next week
+	y, m, d = isoweek.JulianToDate(jdn)
 	fmt.Println(y, m, d)
 	// Output: 1985 January 7
 

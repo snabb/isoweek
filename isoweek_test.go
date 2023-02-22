@@ -2,13 +2,14 @@ package isoweek_test
 
 import (
 	"fmt"
-	"github.com/snabb/isoweek"
 	"testing"
 	"time"
+
+	"github.com/snabb/isoweek"
 )
 
 // TestISOWeekday tests all days from year 1 until year 4000.
-// Ensures that behaviour matches the Go standard library Weekday().
+// Ensures that behaviour matches the Go standard library Weekday.
 func TestISOWeekday(test *testing.T) {
 	t := time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC)
 	var wd1, wd2 int
@@ -32,7 +33,7 @@ func ExampleISOWeekday() {
 }
 
 // TestStartTime tests all weeks from year 1 until year 4000.
-// Ensures that behaviour matches the Go standard library ISOWeek().
+// Ensures that behaviour matches the Go standard library ISOWeek.
 func TestStartTime(test *testing.T) {
 	t := time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC)
 	for t.Weekday() != time.Monday {
@@ -62,7 +63,7 @@ func ExampleStartDate() {
 }
 
 // TestFromDate tests all days from year 1 until year 4000.
-// Ensures that behaviour matches the Go standard library ISOWeek().
+// Ensures that behaviour matches the Go standard library ISOWeek.
 func TestFromDate(test *testing.T) {
 	t := time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC)
 	for t.Year() < 4000 {

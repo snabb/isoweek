@@ -2,9 +2,10 @@ package isoweek_test
 
 import (
 	"fmt"
-	"github.com/snabb/isoweek"
 	"testing"
 	"time"
+
+	"github.com/snabb/isoweek"
 )
 
 func TestJulianToDate(test *testing.T) {
