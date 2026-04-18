@@ -81,6 +81,12 @@ func ExampleFromDate() {
 	// Output: 1983 52
 }
 
+func ExampleFromTime() {
+	t := time.Date(1984, time.January, 1, 0, 0, 0, 0, time.UTC)
+	fmt.Println(isoweek.FromTime(t))
+	// Output: 1983 52
+}
+
 func ExampleValidate() {
 	fmt.Println(
 		isoweek.Validate(2015, 52), isoweek.Validate(2015, 53),

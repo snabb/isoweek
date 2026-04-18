@@ -66,6 +66,11 @@ func ordinalInYear(year int, month time.Month, day int) (dayNo int) {
 	return DateToJulian(year, month, day) - DateToJulian(year, 1, 1) + 1
 }
 
+// FromTime returns ISO 8601 week number of a [time.Time].
+func FromTime(t time.Time) (wyear, week int) {
+	return FromDate(t.Date())
+}
+
 // FromDate returns ISO 8601 week number of a date.
 func FromDate(year int, month time.Month, day int) (wyear, week int) {
 	week = (ordinalInYear(year, month, day) - ISOWeekday(year, month, day) + 10) / 7
