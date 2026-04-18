@@ -86,8 +86,5 @@ func Validate(wyear, week int) (ok bool) {
 	}
 	wyear2, week2 := FromDate(StartDate(wyear, week))
 
-	if wyear == wyear2 && week == week2 {
-		return true
-	}
-	return false
+	return wyear == wyear2 && week == week2
 }
