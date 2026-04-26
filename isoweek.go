@@ -93,3 +93,11 @@ func Validate(wyear, week int) (ok bool) {
 
 	return wyear == wyear2 && week == week2
 }
+
+// WeeksInYear returns the number of ISO 8601 weeks in a year (52 or 53).
+func WeeksInYear(year int) (weeks int) {
+	if Validate(year, 53) {
+		return 53
+	}
+	return 52
+}
