@@ -100,3 +100,28 @@ func ExampleValidate() {
 	// true true false false true
 	// true false false false true
 }
+
+// TestWeeksInYear tests all years from 1 to 4000.
+// Ensures that WeeksInYear is consistent with Validate.
+func TestWeeksInYear(test *testing.T) {
+	for year := 1; year < 4000; year++ {
+		weeks := isoweek.WeeksInYear(year)
+		if weeks != 52 && weeks != 53 {
+			test.Errorf("year %d: expected 52 or 53, got %d", year, weeks)
+		}
+		if weeks == 53 && !isoweek.Validate(year, 53) {
+			test.Errorf("year %d: WeeksInYear=53 but Validate(year,53)=false", year)
+		}
+		if weeks == 52 && isoweek.Validate(year, 53) {
+			test.Errorf("year %d: WeeksInYear=52 but Validate(year,53)=true", year)
+		}
+	}
+}
+
+func ExampleWeeksInYear() {
+	fmt.Println(isoweek.WeeksInYear(2015))
+	fmt.Println(isoweek.WeeksInYear(2016))
+	// Output:
+	// 53
+	// 52
+}
